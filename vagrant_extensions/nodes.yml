@@ -1,0 +1,68 @@
+---
+# Linux Guests
+- name: almalinux-8
+  box: almalinux/8
+- name: almalinux-9
+  box: almalinux/9
+- name: debian-11
+  box: generic/debian11
+- name: debian-12
+  box: generic/debian12
+- name: fedora-37
+  box: generic/fedora37
+- name: fedora-38
+  box: generic/fedora38
+- name: ubuntu-2004
+  box: generic/ubuntu2004
+- name: ubuntu-2204
+  box: generic/ubuntu2204
+
+# Windows Guests
+- name: dc1
+  box: peru/windows-server-2022-standard-x64-eval
+  guest: windows
+  ip: 10.0.0.10
+  provisioners:
+    - name: change_admin_pass
+      args:
+        - "P4ssword!"
+    - name: install_chocolatey
+    - name: install_python
+
+- name: dc2
+  box: peru/windows-server-2022-standard-x64-eval
+  guest: windows
+  ip: 10.0.0.11
+  provisioners:
+    - name: change_admin_pass
+      args:
+        - "P4ssword!"
+    - name: install_chocolatey
+    - name: install_python
+
+- name: windows-server-2019
+  box: peru/windows-server-2019-standard-x64-eval
+  guest: windows
+  hostname: ws2019
+  ip: 10.0.0.100
+  provisioners:
+    - name: change_admin_pass
+      args:
+        - "P4ssword!"
+    - name: install_netframework
+      args:
+        - 48
+    - name: install_chocolatey
+    - name: install_python
+
+- name: windows-server-2022
+  box: peru/windows-server-2022-standard-x64-eval
+  guest: windows
+  hostname: ws2022
+  ip: 10.0.0.101
+  provisioners:
+    - name: change_admin_pass
+      args:
+        - "P4ssword!"
+    - name: install_chocolatey
+    - name: install_python
